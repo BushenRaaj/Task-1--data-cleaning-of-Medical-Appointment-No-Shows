@@ -70,3 +70,68 @@ The cleaned dataset is now consistent, free of invalid values, and ready for **e
 - [Medical Appointment No Shows- cleaned.csv](Medical%20Appointment%20No%20Shows-%20cleaned.csv) → Cleaned dataset  
 - [Task-1-Data-Cleaning-of-Medical-Appointment-No-Shows.ipynb](Task-1-Data-Cleaning-of-Medical-Appointment-No-Shows.ipynb) → Jupyter Notebook (full workflow)  
 - [README.md](README.md) → Documentation 
+
+---
+
+## ❓ Interview Questions Related to This Task
+
+### 1. What are missing values and how do you handle them?
+Missing values are gaps in data. They can be handled by:
+- Removing rows/columns with too many missing values.
+- Imputing using mean/median/mode or domain knowledge.
+
+---
+
+### 2. How do you treat duplicate records?
+- Identify with `df.duplicated().sum()`.
+- Remove exact duplicates using `df.drop_duplicates()`.
+- Investigate duplicates in IDs before dropping.
+  
+---
+
+### 3. Difference between `dropna()` and `fillna()` in Pandas?
+- `dropna()` → Removes rows/columns with missing values.  
+- `fillna()` → Replaces missing values with specified values (mean, median, etc.).  
+👉 Example: Used `fillna()` to replace invalid ages with median.
+
+---
+
+### 4. What is outlier treatment and why is it important?
+- Outliers = values far outside normal range.  
+- Treatment = remove, cap, or transform.  
+- Important because outliers distort averages and ML models.  
+👉 Example: Age = `-1` or `>115` considered invalid → corrected.
+
+---
+
+### 5. Explain the process of standardizing data.
+- Standardization = rescaling data to mean 0 and std 1 (z-scores).  
+- Needed when features are on different scales.  
+- Different from normalization ([0,1] scaling).  
+
+---
+
+### 6. How do you handle inconsistent data formats (e.g., date/time)?
+- Use parsing functions like `pd.to_datetime()`.  
+- Standardize all columns to same format.  
+👉 Example: Converted `ScheduledDay` and `AppointmentDay` into proper datetime objects to calculate `wait_days`.
+
+---
+
+### 7. What are common data cleaning challenges?
+- Missing values  
+- Duplicates  
+- Outliers  
+- Inconsistent formats (dates, categorical labels)  
+- Typographical errors  
+- Large dataset performance issues  
+
+---
+
+### 8. How can you check data quality?
+Check for:
+- Completeness (missing values)  
+- Uniqueness (duplicates)  
+- Validity (do values make sense?)  
+- Consistency (formats are uniform)  
+- Accuracy (if source data is available)  
